@@ -26,6 +26,14 @@ public class MovieResource {
     @Autowired
     private ReviewService reviewService;
 
+    @GetMapping
+    public ResponseEntity<Page<MovieCardDTO>> findByGenre(
+            @RequestParam(value = "genreId", defaultValue = "0") Long genreId,
+            Pageable pageable) {
+
+        Page<MovieCardDTO> list = service.findByGenre(genreId, pageable);
+        return ResponseEntity.ok(list);
+    }
 
     @GetMapping(value = "/{id}")
     public ResponseEntity<MovieDTO> findById(@PathVariable Long id) {
@@ -33,12 +41,6 @@ public class MovieResource {
         return ResponseEntity.ok().body(dto);
     }
 
-    @GetMapping
-    public ResponseEntity<Page<MovieCardDTO>> findByGenre(
-            @RequestParam(value ="categoryId",defaultValue = "0") Long genreId, Pageable pageable) {
-        Page<MovieCardDTO> list = service.findByGenre(genreId, pageable);
-        return ResponseEntity.ok().body(list);
-    }
     @GetMapping(value = "/{movieId}/reviews")
     public ResponseEntity<List<ReviewDTO>> findMovieReviews(@PathVariable Long movieId) {
         List<ReviewDTO> list = reviewService.findMovieReviews(movieId);

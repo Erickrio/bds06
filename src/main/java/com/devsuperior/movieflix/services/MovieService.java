@@ -21,28 +21,31 @@ import java.util.Optional;
 @Service
 public class MovieService {
 
+
     @Autowired
     private MovieRepository repository;
 
     @Autowired
     private GenreRepository genreRepository;
 
-   public MovieDTO findById(Long id){
-       Optional<Movie> obj = repository.findById(id);
-       Movie MovieEntity = obj.orElseThrow(() -> new ResourceNotFoundException("Id dos not exist"));
-       return new MovieDTO(MovieEntity);
-   }
 
-   @Transactional(readOnly = true)
-    public Page<MovieCardDTO> findByGenre(Long genreId, Pageable pageable ){
-       try{
-           List<Genre> genre = (genreId == 0) ? null : Arrays.asList(genreRepository.getOne(genreId));
-           Page<Movie> page = repository.find(genre,pageable);
-           return page.map(x -> new MovieCardDTO());
-       }catch(Exception e){
-            throw  new ResourceNotFoundException("This is not exists" + genreId);
-       }
-   }
+    @Transactional(readOnly = true)
+    public Page<MovieCardDTO> findByGenre(Long genreId, Pageable pageable) {
+        try {
+            List<Genre> genre = (genreId == 0) ? null : Arrays.asList(genreRepository.getOne(genreId));
+            Page<Movie> page = repository.find(genre, pageable);
+            return page.map(x -> new MovieCardDTO(x));
+        }
+        catch(ResourceNotFoundException e) {
+            throw new ResourceNotFoundException("Id does not exist " + genreId);
+        }
+    }
 
+    @Transactional(readOnly = true)
+    public MovieDTO findById(Long id) {
+        Optional<Movie> obj = repository.findById(id);
+        Movie entity = obj.orElseThrow(() -> new ResourceNotFoundException("Id does not exixt"));
+        return new MovieDTO(entity);
+    }
 
 }
