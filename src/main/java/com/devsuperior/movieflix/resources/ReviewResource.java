@@ -1,5 +1,4 @@
 package com.devsuperior.movieflix.resources;
-
 import com.devsuperior.movieflix.dto.ReviewDTO;
 import com.devsuperior.movieflix.services.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-
 import javax.validation.Valid;
 import java.net.URI;
 
@@ -23,7 +21,7 @@ public class ReviewResource {
 
     @PreAuthorize("hasAnyRole('MEMBER')")
     @PostMapping
-    public ResponseEntity<ReviewDTO> insert(@Valid @RequestBody ReviewDTO dto){
+    public ResponseEntity<ReviewDTO> insert(@Valid @RequestBody ReviewDTO dto) {
         dto = service.insert(dto);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
                 .buildAndExpand(dto.getId()).toUri();

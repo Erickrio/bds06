@@ -9,14 +9,13 @@ import com.devsuperior.movieflix.repositories.ReviewRepository;
 import com.devsuperior.movieflix.services.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
+import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.persistence.EntityNotFoundException;
-import java.util.List;
 
-import java.util.stream.Collectors;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 
 @Service
@@ -42,17 +41,16 @@ public class ReviewService {
         }
     }
 
-        @Transactional
-        public ReviewDTO insert(ReviewDTO dto){
-           //pega o usario logado
-           User user = authService.authenticated();
+    @Transactional
+    public ReviewDTO insert(ReviewDTO dto) {
+        //pega o usuario logado
+        User user = authService.authenticated();
 
-           Review review = new Review();
-           review.setText(dto.getText());
-           review.setMovie(movieRepository.getOne(dto.getMovieId()));
-           review.setUser(user);
-           repository.save(review);
-           return new ReviewDTO(review);
-       }
-
+        Review entity = new Review();
+        entity.setText(dto.getText());
+        entity.setMovie(movieRepository.getOne(dto.getMovieId()));
+        entity.setUser(user);
+        repository.save(entity);
+        return new ReviewDTO(entity);
+    }
 }
