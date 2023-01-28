@@ -1,8 +1,13 @@
+import './assets/styles/custom.scss';
+
 import './App.css';
+import Navbar from './assets/components/Navbar';
 
 function App() {
   return (
-    <h1>HELLO</h1>
+    <>
+    <Navbar />
+    </>
   );
 }
 
