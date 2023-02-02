@@ -1,13 +1,20 @@
 import './assets/styles/custom.scss';
-
+import Navbar from './components/Navbar';
+import Login from './pages/Admin/Auth/Login';
 import './App.css';
-import Navbar from './assets/components/Navbar';
+
+
+
+
+
 
 function App() {
   return (
     <>
     <Navbar />
+    <Login />
     </>
+
   );
 }
 
