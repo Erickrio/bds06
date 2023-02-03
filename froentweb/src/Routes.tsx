@@ -1,15 +1,14 @@
-import {Switch ,Route, BrowserRouter } from 'react-router-dom';
+import {Switch ,Route, BrowserRouter} from 'react-router-dom';
 import Navbar from './components/Navbar';
-import Login from './pages/Admin/Auth/Login';
+import Home from './pages/Home';
 
 const Routes = () => (
   <BrowserRouter > 
         <Navbar />
         <Switch>
             <Route path="/" exact>
-                <Login />
+                 <Home /> 
             </Route>
-            {/* <Redirect from="/admin/auth" to="/admin/auth/login" exact /> */}
         </Switch>
   </BrowserRouter>
 );

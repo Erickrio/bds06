@@ -1,18 +1,13 @@
 import './assets/styles/custom.scss';
-import Navbar from './components/Navbar';
-import Login from './pages/Admin/Auth/Login';
 import './App.css';
-
-
-
+import Routes from './Routes';
 
 
 
 function App() {
   return (
     <>
-    <Navbar />
-    <Login />
+    <Routes />
     </>
 
   );
