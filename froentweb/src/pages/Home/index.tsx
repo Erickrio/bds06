@@ -1,5 +1,5 @@
+import Login from './Login';
 
- import Login from './Login';
 import './styles.css';
 
 const Home = () => {
