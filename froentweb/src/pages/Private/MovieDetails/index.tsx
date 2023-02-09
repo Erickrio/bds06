@@ -1,11 +1,17 @@
+import { useParams } from 'react-router-dom';
+
+type urlParams = {
+  movieId: string;
+};
+
 const MovieDetails = () => {
-    return (
-         <>
-         
-         <h1>Details</h1>
-         </>
-    );
-  };
-  
-  export default MovieDetails;
-  
+  const { movieId } = useParams<urlParams>();
+
+  return (
+    <div className="">
+      <h1>Tela detalhes do filme id: {movieId}</h1>
+    </div>
+  );
+};
+
+export default MovieDetails;

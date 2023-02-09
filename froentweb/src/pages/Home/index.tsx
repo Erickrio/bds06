@@ -1,7 +1,6 @@
-import { Switch } from 'react-router-dom';
-import { ReactComponent as AuthImage } from '../../../src/assets/images/desenho.svg';
 
-  import Login from './Login';
+import { ReactComponent as AuthImage } from '../../../src/assets/images/desenho.svg';
+import Login from './Login';
 
 import './styles.css';
 
@@ -14,7 +13,7 @@ const Home = () => {
                     <AuthImage /> 
             </div>
             <div className="home-form-container">
-               {/* < Login />  */}
+               < Login />   
             </div>
         </div>
   );
