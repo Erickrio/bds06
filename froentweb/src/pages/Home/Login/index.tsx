@@ -1,13 +1,17 @@
 import ButtonIcon from '../../../components/ButtonIcon';
-
 import './styles.css';
 
+type FormData = {
+  username: string;
+  password: string;
+};
 
 const Login = () => {
+
   return (
     <div className="base-card login-card">
       <h1>LOGIN</h1>
-      <form>
+      <form >
         <div className="mb-4">
           <input
             type="text"

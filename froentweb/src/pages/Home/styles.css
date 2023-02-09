@@ -1,74 +1,75 @@
 /* Mobile First  336px */
-.auth-container {
+
+   .home-container {
     display: flex;
     justify-content: space-around;
     padding: 20px;
-    border: 1px solid red;
-  }
+    border: 1px solid pink;
+  } 
   
-  .auth-banner-container {
+  .home-banner-container {
     display: none; /* Não Mostra o banner em Tela Pequena  */
      border: 1px solid orange; 
   }
   
-  .auth-form-container {
+  .home-form-container {
     width: 100%;
      border: 1px solid blue; 
-  }
+  } 
   
   @media (min-width: 576px) {
-    .auth-form-container {
+    .home-form-container {
       width: 480px;
     }
   }
   
   @media (min-width: 768px) {
-    .auth-form-container {
+    .home-form-container {
       width: 550px;
     }
   }
   
   @media (min-width: 1200px) {
-    .auth-container {
+    .home-container {
       padding: 40px;
     }
   
-    .auth-banner-container {
+    .home-banner-container {
       display: flex;
       flex-direction: column;
       margin-top: 40px;
       width: 500px;
     }
   
-    .auth-banner-container h1 {
+    .home-banner-container h1 {
       font-size: 40px;
       letter-spacing: -0.015em;
       color: #FFFFFF;
       margin-bottom: 15px;
     }
-    .auth-banner-container p {
+    .home-banner-container p {
       font-size: 18px;
       letter-spacing: -0.015em;
       color: #F2F2F2
     }
   
-    .auth-banner-container svg {
+    .home-banner-container svg {
       width: 100%;
        border: 1px solid green; 
       }
   }
   
   @media (min-width: 1400px) {
-     .auth-banner-container {
+     .home-banner-container {
       width: 600px;
     }
   
-    .auth-banner-container h1 {
+    .home-banner-container h1 {
       font-size: 55px;
       margin-bottom: 25px;
     }
   
-    .auth-banner-container p {
+    .home-banner-container p {
       font-size: 24px;
     }
   
