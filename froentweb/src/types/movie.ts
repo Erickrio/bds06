@@ -1,3 +1,11 @@
+import { Genre } from "./genre";
+
 export type Movie = {
-//TODO
-}
+  id: number;
+  title: string;
+  subTitle: string;
+  year: number;
+  imgUrl: string;
+  synopsis: string;
+  genries: Genre[];
+};

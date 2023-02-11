@@ -21,7 +21,7 @@ type LocationState = {
 const Login = () => {
   const location = useLocation<LocationState>();
 
-  const { from } = location.state || { from: { pathname: '/movie' } }; //faz login e redireciona para /movies
+  const { from } = location.state || { from: { pathname: '/movies' } }; //faz login e redireciona para /movies
 
   const { setAuthContextData } = useContext(AuthContext);
 

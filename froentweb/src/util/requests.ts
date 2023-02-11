@@ -20,7 +20,6 @@ export const requestBackendLogin = (loginData: LoginData) => {
   const headers = {
     'Content-Type': 'application/x-www-form-urlencoded',
     Authorization: 'Basic ' + window.btoa(CLIENT_ID + ':' + CLIENT_SECRET),
-    // Authorization:basicHeader(),
   };
   //Body request - converta em form-url-unlercoded (Add na pasta froentweb - yarn add qs)
 
@@ -73,7 +72,7 @@ axios.interceptors.response.use(
   },
   function (error) {
     if (error.response.status === 401) {
-      history.push('/admin/auth');
+      history.push('/home/login');
     }
     return Promise.reject(error);
   }

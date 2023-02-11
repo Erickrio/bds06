@@ -5,10 +5,11 @@ type urlParams = {
 };
 
 const MovieDetails = () => {
+
   const { movieId } = useParams<urlParams>();
 
   return (
-    <div className="">
+    <div >
       <h1>Tela detalhes do filme id: {movieId}</h1>
     </div>
   );

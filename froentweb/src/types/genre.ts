@@ -1,3 +1,4 @@
 export type Genre = {
-    //TODO 
+  id: number;
+  name: string;
 }
