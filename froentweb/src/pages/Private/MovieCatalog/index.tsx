@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 import { Movie } from '../../../types/movie';
 import { SpringPage } from '../../../types/vendor/spring';
 import { requestBackend } from '../../../util/requests';
-import MovieDetails from '../MovieDetails';
 import MovieCatalogLoad from './MovieCatalogLoad';
+
 
 const MovieCatalog = () => {
   const [page, setPage] = useState<SpringPage<Movie>>();
@@ -40,11 +40,15 @@ const MovieCatalog = () => {
       </div>
 
       <div className="row">
+        {isLoading ? (
+          <MovieCatalogLoad />
+        ) : (
         <div>
           <Link to="/movies/1">
             <p>Acessar /movies/1</p>
           </Link>
         </div>
+        )}
       </div>
 
       <div className="row">
