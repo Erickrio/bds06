@@ -4,14 +4,14 @@
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
     border-radius: 4px;
     margin-top: 10px;
-    border: 1px solid red;
+    /* border: 1px solid red; */
 }
 
 .review-div {
     display: flex;
     flex-direction: column;
     margin-bottom: 14px;
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
 }
 
 .review-username {
@@ -19,7 +19,8 @@
     flex-direction: row;
     align-items: center;
     margin-bottom: 9px;
-    border: 1px solid green;
+    color: #FFFFFF;
+    /* border: 1px solid green;  */
 }
 
 .review-username svg {
@@ -38,10 +39,10 @@
 
 .review-comment {
     box-sizing: border-box;
-    /* border: 1px solid #E1E1E1;  TODO - DESCOMENTE*/
+     border: 1px solid #E1E1E1;  
     border-radius: 4px;
     padding: 10px 28px 21px 12px;
-    border: 1px solid pink;
+    /* border: 1px solid pink; */
 }
 
 .review-comment p {

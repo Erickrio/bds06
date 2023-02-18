@@ -6,7 +6,6 @@ import { SpringPage } from '../../../types/vendor/spring';
 import { requestBackend } from '../../../util/requests';
 import MovieCatalogLoad from './MovieCatalogLoad';
 
-
 const MovieCatalog = () => {
   const [page, setPage] = useState<SpringPage<Movie>>();
   const [isLoading, setIsLoading] = useState(false);
@@ -43,25 +42,38 @@ const MovieCatalog = () => {
         {isLoading ? (
           <MovieCatalogLoad />
         ) : (
-        <div>
-          <Link to="/movies/1">
-            <p>Acessar /movies/1</p>
-          </Link>
-        </div>
+          <div>
+            <Link to="/movies/1">
+              <p>Acessar /movies/1</p>
+            </Link>
+          </div>
         )}
       </div>
 
       <div className="row">
-      {isLoading ? (
-       < MovieCatalogLoad />
+        {isLoading ? (
+          <MovieCatalogLoad />
         ) : (
-        <div>
-          <Link to="/movies/2">
-            <p>Acessar /movies/2</p>
-          </Link>
-        </div>
+          <div>
+            <Link to="/movies/2">
+              <p>Acessar /movies/2</p>
+            </Link>
+          </div>
         )}
       </div>
+
+      {/* TODO- APOS AVALIAÇÃO DEIXAR DINAMICO AQUI */}
+      <>
+        <div className="catalog-list">
+          {page?.content.map((movie) => (
+            <div key={movie.id}>
+              <Link to={`/movies/${movie.id}/reviews`}>
+                {/* <MovieCard movie={movie} /> */}
+              </Link>
+            </div>
+          ))}
+        </div>
+      </>
     </div>
   );
 };

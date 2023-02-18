@@ -14,7 +14,6 @@
     font-size: 20px;
     letter-spacing: -0.015em;
     text-transform: uppercase;
-    border: 1px solid orangered; 
 }
 
 .btn-icon-container {
@@ -24,7 +23,7 @@
     width: 50px;
     height: 50px;
     border-radius: 0px 10px 10px 0px;
-    background-color: #33569B;
+    /* background-color: #33569B; */
 
 }
 
@@ -37,6 +36,7 @@
 
     .btn-container button{
         width: calc(100% - 70px);
+        /* border: 1px solid red; */
     }  
 
     .btn h6 {

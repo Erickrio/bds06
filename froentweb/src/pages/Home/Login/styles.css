@@ -2,7 +2,7 @@
   padding: 20px;
   font-size: 16px;
   background: #6c6c6c;
-  border: 1px solid red;
+  /* border: 1px solid red;  */
 }
 
 .login-card h1 {
@@ -14,12 +14,13 @@
   text-transform: uppercase;
   margin-top: 85px;
   margin-bottom: 50px;
-  border: 1px solid blue;
+   /* border: 1px solid blue;  */
 }
 
 .login-submit {
   margin-bottom: 10px;
-  border: 1px solid green;
+  /* border: 1px solid pink; */
+  
 }
 
 @media (min-width: 576px) {
