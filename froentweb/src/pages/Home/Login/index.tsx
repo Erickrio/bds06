@@ -2,7 +2,7 @@ import { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useHistory, useLocation } from 'react-router-dom';
 import { AuthContext } from '../../../AuthContext';
-import ButtonIcon from '../../../components/ButtonIcon';
+import Button from '../../../components/Button';
 import { getTokenData } from '../../../util/auth';
 import { requestBackendLogin } from '../../../util/requests';
 import { saveAuthData } from '../../../util/storage';
@@ -95,7 +95,7 @@ const Login = () => {
             <div className="invalid-feedback d-block">{errors.password?.message}</div>
         </div>
         <div className="login-submit">
-          <ButtonIcon text="Fazer login" />
+          <Button text="Fazer login" />
         </div>
       </form>
     </div>

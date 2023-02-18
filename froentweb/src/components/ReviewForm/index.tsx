@@ -2,6 +2,11 @@ import { AxiosRequestConfig } from 'axios';
 import { useForm } from 'react-hook-form';
 import { Review } from '../../types/review';
 import { requestBackend } from '../../util/requests';
+import Button from '../Button';
+import { toast } from 'react-hot-toast';
+
+
+import './styles.css';
 
 type Props = {
   movieId: string;
@@ -33,22 +38,38 @@ const ReviewForm = ({ movieId ,onInsertReview}: Props) => {
     };
 
     requestBackend(config)
-    .then(response =>{
+    .then(response =>  {
       setValue('text','');
       onInsertReview(response.data);
-      console.log("SUCESSO AO SALVAR",response);
-    }).catch(error =>{
-      console.log("ERRO AO SALVAR",error);
+       console.log("Salvo Com sucesso!",response);
+       toast.success('Comentário salvo com sucesso!');
+    })
+    .catch(error => {
+      toast.error('Erro ao salvar!');
+      console.log("Erro ao Salvar",error);
+      
     })
   };
 
   return (
-    <div className="container">
-      <div className="review-form">
-        <p>Deixe a sua avaliação aqui</p>
-        <button>SALVAR AVALIAÇÂO</button>
+    <div className="container-review">
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <input
+        {...register('text', {
+          required: 'Campo obrigatório',
+        })}
+        type="text"
+        placeholder="Deixe sua avaliação aqui"
+        name="text"
+      />
+      {/* {errors.text?.message} */}
+      <div className="invalid-feedback d-block">  {errors.text?.message}</div>
+
+      <div className="review-button">
+        <Button text="salvar avaliação" />
       </div>
-    </div>
+    </form>
+  </div>
   );
 };
 export default ReviewForm;

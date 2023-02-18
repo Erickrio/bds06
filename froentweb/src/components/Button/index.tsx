@@ -3,7 +3,7 @@
 type Props= { 
   text: string;
 }
-const ButtonIcon = ({ text} : Props) => {
+const Button = ({ text} : Props) => {
   return (
     <div className="btn-container">
         <button className="btn btn-primary ">
@@ -13,4 +13,4 @@ const ButtonIcon = ({ text} : Props) => {
   );
 };
 
-export default ButtonIcon;
+export default Button;
