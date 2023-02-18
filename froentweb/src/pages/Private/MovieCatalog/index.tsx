@@ -52,11 +52,15 @@ const MovieCatalog = () => {
       </div>
 
       <div className="row">
+      {isLoading ? (
+       < MovieCatalogLoad />
+        ) : (
         <div>
           <Link to="/movies/2">
             <p>Acessar /movies/2</p>
           </Link>
         </div>
+        )}
       </div>
     </div>
   );

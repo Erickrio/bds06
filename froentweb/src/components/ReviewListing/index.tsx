@@ -1,4 +1,5 @@
 import { Review } from '../../types/review';
+import { ReactComponent as Star } from '../../../src/assets/images/star.svg';
 
 import './styles.css';
 
@@ -12,6 +13,7 @@ const ReviewListing = ({ reviews }: Props) => {
       {reviews.map((reviewItem) => (
         <div key={reviewItem.id} className="review-div">
           <div className="review-username">
+           <Star /> 
             <h4>{reviewItem.user.name}</h4>
           </div>
           <div className="review-comment">
