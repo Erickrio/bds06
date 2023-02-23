@@ -1,6 +1,7 @@
 import { AxiosRequestConfig } from 'axios';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import MovieCard from '../../../components/MovieCard';
 import { Movie } from '../../../types/movie';
 import { SpringPage } from '../../../types/vendor/spring';
 import { requestBackend } from '../../../util/requests';
@@ -38,42 +39,19 @@ const MovieCatalog = () => {
         <h1>Tela de Listagem de Filmes </h1>
       </div>
 
-      <div className="row">
-        {isLoading ? (
-          <MovieCatalogLoad />
-        ) : (
-          <div>
-            <Link to="/movies/1">
-              <p>Acessar /movies/1</p>
-            </Link>
-          </div>
-        )}
-      </div>
-
-      <div className="row">
-        {isLoading ? (
-          <MovieCatalogLoad />
-        ) : (
-          <div>
-            <Link to="/movies/2">
-              <p>Acessar /movies/2</p>
-            </Link>
-          </div>
-        )}
-      </div>
-
-      {/* TODO- APOS AVALIAÇÃO DEIXAR DINAMICO AQUI */}
-      <>
+      {isLoading ? (
+        <MovieCatalogLoad />
+      ) : (
         <div className="catalog-list">
           {page?.content.map((movie) => (
             <div key={movie.id}>
               <Link to={`/movies/${movie.id}/reviews`}>
-                {/* <MovieCard movie={movie} /> */}
+                <MovieCard movie={movie} />
               </Link>
             </div>
           ))}
         </div>
-      </>
+      )}
     </div>
   );
 };
