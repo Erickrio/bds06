@@ -6,6 +6,7 @@ import './styles.css';
 type Props = {
   reviews: Review[];
 };
+/*EQ ReviewCard */
 
 const ReviewListing = ({ reviews }: Props) => {
   return (

@@ -1,7 +1,7 @@
 import { AxiosRequestConfig } from 'axios';
 import { useForm } from 'react-hook-form';
 import { Review } from '../../types/review';
-import { requestBackend } from '../../util/requests';
+import { BASE_URL, requestBackend } from '../../util/requests';
 import Button from '../Button';
  import { toast } from 'react-hot-toast';
 
@@ -30,15 +30,15 @@ const ReviewForm = ({ movieId ,onInsertReview}: Props) => {
   const onSubmit = (formData: FormData) => {
     formData.movieId = parseInt(movieId);
     console.log(formData);
-
-    const config: AxiosRequestConfig = {
+    const saveReview: AxiosRequestConfig = {
       method: 'POST',
       url: '/reviews',
-      data: formData,
       withCredentials: true,
+      baseURL: BASE_URL,
+      data: formData,
     };
 
-    requestBackend(config)
+    requestBackend(saveReview)
     .then(response =>  {
       setValue('text','');
       onInsertReview(response.data);

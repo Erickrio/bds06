@@ -1,7 +1,16 @@
 import axios, { AxiosRequestConfig } from 'axios';
 import qs from 'qs';
-import history from './history';
-import { getAuthData } from './storage';
+
+type LoginResponse = {
+  access_token: string;
+  token_type: string;
+  expires_in: number;
+  scope: string;
+  userId: number;
+}
+
+
+const tokenKey = 'authData';
 
 export const BASE_URL =
   process.env.REACT_APP_BACKEND_URL ?? 'http://localhost:8080';
@@ -9,19 +18,19 @@ export const BASE_URL =
 const CLIENT_ID = process.env.REACT_APP_CLIENT_ID ?? 'myclientid';
 const CLIENT_SECRET = process.env.REACT_APP_CLIENT_SECRET ?? 'myclientsecret';
 
-//const basicHeader = () => 'Basic ' + window.btoa(CLIENT_ID + ':' + CLIENT_SECRET);
+const basicHeader = () =>
+  'Basic ' + window.btoa(CLIENT_ID + ':' + CLIENT_SECRET);
+
 type LoginData = {
   username: string;
   password: string;
 };
 
-//função para fazer requisição de login
 export const requestBackendLogin = (loginData: LoginData) => {
   const headers = {
     'Content-Type': 'application/x-www-form-urlencoded',
-    Authorization: 'Basic ' + window.btoa(CLIENT_ID + ':' + CLIENT_SECRET),
+    Authorization: basicHeader(),
   };
-  //Body request - converta em form-url-unlercoded (Add na pasta froentweb - yarn add qs)
 
   const data = qs.stringify({
     ...loginData,
@@ -37,45 +46,24 @@ export const requestBackendLogin = (loginData: LoginData) => {
   });
 };
 
-//Generica - Recebe as configurações axios
 export const requestBackend = (config: AxiosRequestConfig) => {
   const headers = config.withCredentials
     ? {
-        ...config.headers, //pega o hearder e acrescenta o Authorization (requizição autorizada)
-        Authorization: 'Bearer ' + getAuthData().access_token, //vai ao localStorage
+        ...config.headers,
+        Authorization: 'Bearer ' + getAuthData().access_token,
       }
     : config.headers;
 
   return axios({ ...config, baseURL: BASE_URL, headers });
 };
 
+export const saveAuthData = (token: LoginResponse) => {
+  localStorage.setItem(tokenKey, JSON.stringify(token));
+};
 
-
-// Add a request interceptor
-axios.interceptors.request.use(
-  function (config) {
-    //
-    return config;
-  },
-  function (error) {
-    //
-    return Promise.reject(error);
-  }
-);
-
-// Add a response interceptor
-axios.interceptors.response.use(
-  function (response) {
-    // Any status code that lie within the range of 2xx cause this function to trigger
-    // Do something with response data
-    return response;
-  },
-  function (error) {
-    if (error.response.status === 401) {
-      history.push('/home/login');
-    }
-    return Promise.reject(error);
-  }
-);
+export const getAuthData = () => {
+  const stringToken = localStorage.getItem(tokenKey) ?? '{}';
+  return JSON.parse(stringToken) as LoginResponse;
+};
 
 

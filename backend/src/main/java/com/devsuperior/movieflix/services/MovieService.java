@@ -32,7 +32,8 @@ public class MovieService {
     @Transactional(readOnly = true)
     public Page<MovieCardDTO> findByGenre(Long genreId, Pageable pageable) {
         try {
-            List<Genre> genre = (genreId == 0) ? null : Arrays.asList(genreRepository.getOne(genreId));
+            //List<Genre> genre = (genreId == 0) ? null : Arrays.asList(genreRepository.getOne(genreId));
+            Genre genre = (genreId == 0) ? null : genreRepository.getOne(genreId);
             Page<Movie> page = repository.find(genre, pageable);
             return page.map(x -> new MovieCardDTO(x));
         }
